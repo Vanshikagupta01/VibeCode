@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern UI Components</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        header {
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+        nav button {
+            background: #00aaff;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        nav button:hover {
+            background: #0088cc;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        }
+        .custom-button {
+            background: #00aaff;
+            color: white;
+            border: none;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .custom-button:hover {
+            background: #0088cc;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .card {
+            background: #242424;
+            padding: 15px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+        }
+        .tabs button {
+            background: #00aaff;
+            border: none;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+        }
+        .tabs button:hover {
+            background: #0088cc;
+        }
+        .styled-textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            background: #282828;
+            color: white;
+            border: 1px solid #555;
+            border-radius: 6px;
+            font-size: 14px;
+            resize: vertical;
+            transition: 0.3s;
+        }
+        .styled-textarea:focus {
+            border-color: #00aaff;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Modern UI Components</h1>
+        <nav>
+            <button onclick="document.getElementById('buttons-section').scrollIntoView()">Buttons</button>
+            <button onclick="document.getElementById('inputs-section').scrollIntoView()">Inputs</button>
+            <button onclick="document.getElementById('cards-section').scrollIntoView()">Cards</button>
+            <button onclick="document.getElementById('layout-section').scrollIntoView()">Layout</button>
+        </nav>
+    </header>
+
+    <div id="buttons-section" class="container">
+        <h2>Buttons</h2>
+        <button class="custom-button">Primary Button</button>
+        <button class="custom-button" style="background: #ff4081;">Secondary Button</button>
+        <button class="custom-button" style="background: #4caf50;">Success Button</button>
+    </div>
+
+    <div id="inputs-section" class="container">
+        <h2>Inputs</h2>
+        <label for="userInput">Your Thoughts:</label>
+        <textarea id="userInput" class="styled-textarea" placeholder="Type something..."></textarea>
+    </div>
+
+    <div id="cards-section" class="container">
+        <h2>Cards</h2>
+        <div class="card-container" id="new-cards">
+            <div class="card">
+                <h3>Modern Card UI</h3>
+                <p>This is a stylish and simple card component designed with modern UI principles.</p>
+            </div>
+        </div>
+        <button class="custom-button" onclick="createCard()">Create New Card</button>
+    </div>
+
+    <div id="layout-section" class="container">
+        <h2>Layout</h2>
+        <div class="tabs">
+            <button onclick="showTab('tab1')">Tab 1</button>
+            <button onclick="showTab('tab2')">Tab 2</button>
+            <button onclick="showTab('tab3')">Tab 3</button>
+        </div>
+        <div id="tab1" class="tab-content">Content for Tab 1</div>
+        <div id="tab2" class="tab-content hidden">Content for Tab 2</div>
+        <div id="tab3" class="tab-content hidden">Content for Tab 3</div>
+    </div>
+
+    <script>
+        function createCard() {
+            let newCard = document.createElement('div');
+            newCard.className = 'card';
+            newCard.innerHTML = '<h3>New Card</h3><p>This is a dynamically created card.</p>';
+            document.getElementById('new-cards').appendChild(newCard);
+        }
+
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+            document.getElementById(tabId).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

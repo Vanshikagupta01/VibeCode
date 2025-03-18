@@ -1,0 +1,59 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #181818;
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Spotify UI */
+.spotify-container {
+    text-align: center;
+    background: #1c1c1c;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    margin: auto;
+}
+
+.spotify-box {
+    background: #111;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    text-align: left;
+    max-width: 400px;
+    width: 100%;
+}
+
+.spotify-box h3 {
+    display: flex;
+    align-items: center;
+}
+
+.spotify-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.spotify-box li {
+    margin: 5px 0;
+}
+
+#spotifyLoginBtn {
+    background: #1db954;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#spotifyLoginBtn:hover {
+    background: #1ed760;
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Code Explanation Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        select {
+            width: 100%;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        pre {
+            background: #333;
+            padding: 15px;
+            text-align: left;
+            border-radius: 5px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>AI-Powered Code Explanation Tool</h2>
+        <select id="language">
+            <option value="react">React</option>
+            <option value="javascript">JavaScript</option>
+            <option value="css">CSS</option>
+            <option value="java">Java</option>
+            <option value="cpp">C++</option>
+        </select>
+        <button onclick="showCode()">Show Code</button>
+        <button onclick="showExplanation()">Explain Code</button>
+        
+        <pre id="code" class="hidden"></pre>
+        <div id="explanation" class="hidden"></div>
+        <div id="how-it-works" class="hidden">
+            <h3>How It Works</h3>
+            <ul>
+                <li>Select a programming language from the dropdown.</li>
+                <li>Click "Show Code" to display a sample code snippet.</li>
+                <li>Click "Explain Code" to get an AI-powered explanation.</li>
+                <li>The explanation will help understand the code behavior and usage.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const codeSnippets = {
+            react: `// React Counter Component
+import React, { useState } from 'react';
+function Counter() {
+    const [count, setCount] = useState(0);
+    return <button onClick={() => setCount(count + 1)}>Count: {count}</button>;
+}
+export default Counter;`,
+
+            javascript: `// JavaScript Function to Reverse a String
+function reverseString(str) {
+    return str.split('').reverse().join('');
+}
+console.log(reverseString('hello'));`,
+
+            css: `/* CSS Styling for a Button */
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}`,
+
+            java: `// Java Program to Print Fibonacci Series
+public class Fibonacci {
+    public static void main(String[] args) {
+        int n1 = 0, n2 = 1, n3, i, count = 10;
+        System.out.print(n1 + " " + n2);
+        for (i = 2; i < count; i++) {
+            n3 = n1 + n2;
+            System.out.print(" " + n3);
+            n1 = n2;
+            n2 = n3;
+        }
+    }
+}`,
+
+            cpp: `// C++ Program for Factorial
+#include <iostream>
+using namespace std;
+int factorial(int n) {
+    return (n == 1 || n == 0) ? 1 : n * factorial(n - 1);
+}
+int main() {
+    cout << "Factorial of 5 is: " << factorial(5);
+    return 0;
+}`
+        };
+
+        const explanations = {
+            react: "This is a simple React component that uses the useState hook to maintain a counter state. When the button is clicked, the count increments by 1.",
+            javascript: "This JavaScript function takes a string as input, splits it into an array, reverses it, and joins it back into a string to return the reversed value.",
+            css: "This CSS code styles a button with a blue background, white text, padding, rounded corners, and a pointer cursor.",
+            java: "This Java program prints the Fibonacci series using a loop and maintains previous values for generating the next sequence.",
+            cpp: "This C++ program calculates the factorial of a number using recursion, where the base case returns 1, and the recursive case multiplies the current number by factorial(n-1)."
+        };
+
+        function showCode() {
+            const language = document.getElementById('language').value;
+            document.getElementById('code').textContent = codeSnippets[language];
+            document.getElementById('code').classList.remove('hidden');
+            document.getElementById('explanation').classList.add('hidden');
+            document.getElementById('how-it-works').classList.add('hidden');
+        }
+
+        function showExplanation() {
+            const language = document.getElementById('language').value;
+            document.getElementById('explanation').innerHTML = `<h3>AI-Based Explanation</h3><p>${explanations[language]}</p>`;
+            document.getElementById('explanation').classList.remove('hidden');
+            document.getElementById('how-it-works').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
